@@ -46,7 +46,7 @@ def convert_pr_units(cube):
     return cube
 
 
-def plot_data(cube, month, gridlines=False):
+def plot_data(cube, month, gridlines):
     """Plot the precipitation climatology data for a specific
     month."""
     fig = plt.figure(figsize=[12,5])
@@ -73,12 +73,16 @@ def main(inargs):
 
 
 if __name__ == '__main__':
-    description='Plot the precipitation climatology.'
+    description='Plot the precipitation climatology for a given month.'
     parser = argparse.ArgumentParser(description=description)
     
     parser.add_argument("infile", type=str, help="Input file name")
     parser.add_argument("month", type=str, choices=['Jan','Feb','Mar','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], help="Month to plot")
     parser.add_argument("outfile", type=str, help="Output file name")
+    parser.add_argument("--gridlines", action="store_true", default=False,
+                    help="Include gridlines on the plot")
+    parser.add_argument("--cbar_levels", type=float, nargs='*', default=None,
+                    help='list of levels / tick marks to appear on the colourbar')
 
     args = parser.parse_args()            
     main(args)

@@ -70,7 +70,7 @@ def main(inargs):
     clim = cube.collapsed('time', iris.analysis.MEAN)
     plot_data(clim, inargs.month)
     plt.savefig(inargs.outfile)
-
+# Random comment
 
 if __name__ == '__main__':
     description='Plot the precipitation climatology for a given month.'
